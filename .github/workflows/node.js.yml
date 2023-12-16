@@ -28,9 +28,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: Start MongoDB
-      uses: supercharge/mongodb-github-action@1.10.0
+      uses: MongoCamp/mongodb-github-action@1.0.0
       with:
         mongodb-version: ${{ matrix.mongodb-version }}
+    
+    - run: curl http://localhost:27017
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
